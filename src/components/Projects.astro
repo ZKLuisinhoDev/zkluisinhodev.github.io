@@ -289,13 +289,21 @@ const projects = [
 </section>
 
 <script>
-  let currentImages = [];
+  interface Project {
+    title: string;
+    description: string;
+    images: string[];
+  }
+
+  let currentImages: string[] = [];
   let currentIdx = 0;
 
   const modal = document.getElementById("imageModal");
   const modalBackdrop = document.getElementById("modalBackdrop");
   const modalPanel = document.getElementById("modalPanel");
-  const modalImage = document.getElementById("modalImage");
+  const modalImage = document.getElementById(
+    "modalImage"
+  ) as HTMLImageElement | null;
   const modalTitle = document.getElementById("modalTitle");
   const modalDesc = document.getElementById("modalDesc");
   const prevBtn = document.getElementById("prevBtn");
@@ -304,50 +312,59 @@ const projects = [
   const totalImages = document.getElementById("totalImages");
   const closeModal = document.getElementById("closeModal");
 
-  function openModal(project) {
+  function openModal(project: Project) {
     currentImages = project.images;
     currentIdx = 0;
 
     // Update Content
-    modalTitle.textContent = project.title;
-    modalDesc.textContent = project.description;
-    totalImages.textContent = currentImages.length;
+    if (modalTitle) modalTitle.textContent = project.title;
+    if (modalDesc) modalDesc.textContent = project.description;
+    if (totalImages) totalImages.textContent = currentImages.length.toString();
     updateImage();
 
     // Show Modal
-    modal.classList.remove("hidden");
-    // Small delay for CSS transition
-    setTimeout(() => {
-      modalBackdrop.classList.remove("opacity-0");
-      modalPanel.classList.remove("opacity-0", "scale-95");
-    }, 10);
+    if (modal) {
+      modal.classList.remove("hidden");
+      // Small delay for CSS transition
+      setTimeout(() => {
+        if (modalBackdrop) modalBackdrop.classList.remove("opacity-0");
+        if (modalPanel) modalPanel.classList.remove("opacity-0", "scale-95");
+      }, 10);
+    }
   }
 
   function closeModalFunc() {
-    modalBackdrop.classList.add("opacity-0");
-    modalPanel.classList.add("opacity-0", "scale-95");
+    if (modalBackdrop) modalBackdrop.classList.add("opacity-0");
+    if (modalPanel) modalPanel.classList.add("opacity-0", "scale-95");
     setTimeout(() => {
-      modal.classList.add("hidden");
+      if (modal) modal.classList.add("hidden");
     }, 300);
   }
 
   function updateImage() {
-    modalImage.style.opacity = "0";
-    setTimeout(() => {
-      modalImage.src =
-        currentImages[currentIdx] ||
-        "https://via.placeholder.com/800x450?text=No+Image+Loaded"; // Fallback
-      currentImageIdx.textContent = currentIdx + 1;
-      modalImage.style.opacity = "1";
-    }, 150);
+    if (modalImage) {
+      modalImage.style.opacity = "0";
+      setTimeout(() => {
+        if (modalImage) {
+          modalImage.src =
+            currentImages[currentIdx] ||
+            "https://via.placeholder.com/800x450?text=No+Image+Loaded"; // Fallback
+          if (currentImageIdx)
+            currentImageIdx.textContent = (currentIdx + 1).toString();
+          modalImage.style.opacity = "1";
+        }
+      }, 150);
+    }
   }
 
   function nextImage() {
+    if (currentImages.length === 0) return;
     currentIdx = (currentIdx + 1) % currentImages.length;
     updateImage();
   }
 
   function prevImage() {
+    if (currentImages.length === 0) return;
     currentIdx = (currentIdx - 1 + currentImages.length) % currentImages.length;
     updateImage();
   }
@@ -355,44 +372,53 @@ const projects = [
   // Event Listeners
   document.querySelectorAll(".project-card").forEach((card) => {
     card.addEventListener("click", () => {
-      const project = JSON.parse(card.getAttribute("data-project-json"));
-      openModal(project);
+      const projectData = card.getAttribute("data-project-json");
+      if (projectData) {
+        const project = JSON.parse(projectData) as Project;
+        openModal(project);
+      }
     });
   });
 
-  closeModal.addEventListener("click", closeModalFunc);
-  nextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    nextImage();
-  });
-  prevBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    prevImage();
-  });
+  if (closeModal) closeModal.addEventListener("click", closeModalFunc);
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      nextImage();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      prevImage();
+    });
+  }
 
   // Close on backdrop click
-  modal.addEventListener("click", (e) => {
-    if (
-      e.target === modalBackdrop ||
-      e.target.closest("#modalPanel") === null
-    ) {
-      if (e.target.closest(".project-card")) return; // ignore if clicking card (shouldn't happen due to z-index but safety)
-      // Actually wrapper is covering, so check if click is outside panel
-      const rect = modalPanel.getBoundingClientRect();
-      const isInDialog =
-        rect.top <= e.clientY &&
-        e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX &&
-        e.clientX <= rect.left + rect.width;
-      if (!isInDialog) {
-        closeModalFunc();
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (target === modalBackdrop || target.closest("#modalPanel") === null) {
+        if (target.closest(".project-card")) return;
+
+        if (modalPanel) {
+          const rect = modalPanel.getBoundingClientRect();
+          const isInDialog =
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom &&
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right;
+          if (!isInDialog) {
+            closeModalFunc();
+          }
+        }
       }
-    }
-  });
+    });
+  }
 
   // Keyboard navigation
   document.addEventListener("keydown", (e) => {
-    if (modal.classList.contains("hidden")) return;
+    if (modal && modal.classList.contains("hidden")) return;
     if (e.key === "Escape") closeModalFunc();
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();

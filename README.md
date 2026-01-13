@@ -1,47 +1,63 @@
-# Portfolio de Desarrollador
+# 🚀 LuisinhoDEV | Portfolio Profesional
 
-Este proyecto es un portfolio personal construido con [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com) y HTML.
+¡Bienvenido a mi sitio personal! Soy un **Ingeniero de Sistemas (Universidad de Nariño)** enfocado en el desarrollo Full Stack, Inteligencia Artificial y Diseño Multimedia. Este portfolio está diseñado para mostrar mi trayectoria, habilidades técnicas y proyectos destacados.
 
-## 🚀 Características
+## �️ Tecnologías Utilizadas
 
-- **Diseño Responsivo**: Se adapta a cualquier dispositivo.
-- **Tema Oscuro**: Elegante y moderno por defecto.
-- **Alto Rendimiento**: Gracias a la arquitectura de Islas de Astro.
-- **Fácil de Personalizar**: Componentes modulares.
+- **Frontend:** Astro 5, Tailwind CSS 4, React.
+- **Backend & IA:** Python (Django/DRF), TensorFlow, Keras.
+- **Infraestructura:** Supabase, Render, Vercel, GitHub Actions.
+- **Diseño:** Multimedia & UI/UX (Certificación SENA).
 
-## 🛠️ Instalación
+## ✨ Características Principales
 
-1. Clona este repositorio (si aún no lo tienes localmente).
-2. Instala las dependencias:
+- **Velocidad Extrema:** Construido con la arquitectura de islas de Astro para un rendimiento óptimo.
+- **Carrusel Interactivo:** Galería de imágenes integrada para visualizar capturas de pantalla de mis proyectos.
+- **Diseño Premium:** Estética oscura moderna con animaciones fluidas y micro-interacciones.
+- **Contacto Directo:** Enlaces rápidos a WhatsApp, Correo y LinkedIn.
 
-```bash
-npm install
-```
+## � Despliegue en GitHub Pages (Automático)
 
-3. Inicia el servidor de desarrollo:
+Este repositorio está configurado con **GitHub Actions**. Cada vez que hagas `git push` a la rama `main`, tu sitio se actualizará automáticamente.
 
-```bash
-npm run dev
-```
+### Configuración Necesaria:
 
-## 📦 Despliegue en GitHub Pages
+1.  **Astro Config:** Abre `astro.config.mjs` y actualiza la propiedad `site`:
+    ```javascript
+    export default defineConfig({
+      site: "https://ZKLuisinhoDev.github.io",
+      base: "/nombre-de-tu-repo", // Opcional: solo si el repo no se llama igual que tu perfil
+      // ...
+    });
+    ```
+2.  **GitHub Settings:**
+    - Ve a tu repositorio en GitHub.
+    - Selecciona **Settings** > **Pages**.
+    - En **Build and deployment** > **Source**, elige **GitHub Actions**.
 
-Este proyecto incluye un flujo de trabajo de GitHub Actions en `.github/workflows/deploy.yml`.
+## 💻 Instalación Local
 
-### Pasos para desplegar:
+Si quieres clonar este proyecto y probarlo localmente:
 
-1. Crea un repositorio en GitHub.
-2. Sube tu código:
-   ```bash
-   git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
-   git push -u origin main
-   ```
-3. En tu repositorio de GitHub, ve a **Settings** > **Pages**.
-4. En **Build and deployment** > **Source**, selecciona **GitHub Actions**.
-5. Asegúrate de actualizar `astro.config.mjs`:
-   - `site`: Tu URL de GitHub Pages (ej. `https://tu-usuario.github.io`).
-   - `base`: El nombre de tu repositorio si no es un sitio de usuario (ej. `/mi-portfolio`).
+1.  **Instala las dependencias:**
+    ```bash
+    npm install
+    ```
+2.  **Inicia el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+3.  **(Opcional) Abrir túnel público con Tunnelmole:**
+    ```bash
+    npx tunnelmole 4321
+    ```
 
-## 📝 Personalización
+## � Personalización
 
-Edita los archivos en `src/components/` para cambiar textos, proyectos e información.
+- **Fotos de Proyectos:** Guarda tus capturas en `public/placeholders/` y actualiza las rutas en `src/components/Projects.astro`.
+- **Foto de Perfil:** Sustituye `public/mi-foto.jpeg` por tu foto personal.
+- **Textos:** Todo el contenido está modularizado en la carpeta `src/components/`.
+
+---
+
+Desarrollado con ❤️ por **LuisinhoDEV**
