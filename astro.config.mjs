@@ -4,7 +4,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://zkluisinhodev.github.io",
-  // ⚠️ NO base cuando el repo es username.github.io
+  base: "zkluisinhodev", 
+
   vite: {
     plugins: [tailwindcss()],
     server: {
