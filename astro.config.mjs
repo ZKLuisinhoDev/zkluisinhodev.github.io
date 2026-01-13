@@ -6,9 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   // Reemplaza con tu dominio o 'https://<tu-usuario>.github.io'
-  site: "https://luisinhodev.github.io",
+  site: "https://ZKLuisinhoDev.github.io",
   // Si despliegas en <tu-usuario>.github.io/<nombre-repo>, agrega base: '/nombre-repo'
-  // base: '/portafolio',
+  base: "/luisinhodev.github.io",
   vite: {
     plugins: [tailwindcss()],
     server: {
