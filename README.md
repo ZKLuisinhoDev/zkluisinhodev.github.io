@@ -1,43 +1,47 @@
-# Astro Starter Kit: Minimal
+# Portfolio de Desarrollador
 
-```sh
-npm create astro@latest -- --template minimal
+Este proyecto es un portfolio personal construido con [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com) y HTML.
+
+## 🚀 Características
+
+- **Diseño Responsivo**: Se adapta a cualquier dispositivo.
+- **Tema Oscuro**: Elegante y moderno por defecto.
+- **Alto Rendimiento**: Gracias a la arquitectura de Islas de Astro.
+- **Fácil de Personalizar**: Componentes modulares.
+
+## 🛠️ Instalación
+
+1. Clona este repositorio (si aún no lo tienes localmente).
+2. Instala las dependencias:
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+3. Inicia el servidor de desarrollo:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📦 Despliegue en GitHub Pages
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Este proyecto incluye un flujo de trabajo de GitHub Actions en `.github/workflows/deploy.yml`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Pasos para desplegar:
 
-## 🧞 Commands
+1. Crea un repositorio en GitHub.
+2. Sube tu código:
+   ```bash
+   git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
+   git push -u origin main
+   ```
+3. En tu repositorio de GitHub, ve a **Settings** > **Pages**.
+4. En **Build and deployment** > **Source**, selecciona **GitHub Actions**.
+5. Asegúrate de actualizar `astro.config.mjs`:
+   - `site`: Tu URL de GitHub Pages (ej. `https://tu-usuario.github.io`).
+   - `base`: El nombre de tu repositorio si no es un sitio de usuario (ej. `/mi-portfolio`).
 
-All commands are run from the root of the project, from a terminal:
+## 📝 Personalización
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Edita los archivos en `src/components/` para cambiar textos, proyectos e información.
