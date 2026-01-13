@@ -1,0 +1,22 @@
+---
+const links = [
+  { name: 'Inicio', href: '#home' },
+  { name: 'Proyectos', href: '#projects' },
+  { name: 'Sobre Mí', href: '#about' },
+  { name: 'Contacto', href: '#contact' },
+];
+---
+<nav class="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="#home" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-300">
+      LassoDev
+    </a>
+    <div class="hidden md:flex gap-8">
+      {links.map(link => (
+        <a href={link.href} class="text-sm font-medium text-gray-300 hover:text-white hover:underline decoration-blue-500 underline-offset-4 transition-all duration-300">
+          {link.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
