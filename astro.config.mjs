@@ -11,5 +11,8 @@ export default defineConfig({
   // base: '/portafolio',
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: true,
+    },
   },
 });
