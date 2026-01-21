@@ -73,6 +73,16 @@ const projects = [
     link: "https://github.com/ZKLuisinhoDev/task-habit-tracker-fullstack-fastapi-react",
   },
   {
+    id: "academic-analysis",
+    title: "Academic Performance Analysis 🎓📊",
+    description:
+      "Solución de Data Analysis para la gestión de métricas educativas. Utiliza Python y Pandas para transformar datos crudos en información accionable, permitiendo detectar riesgos de deserción y patrones de rendimiento. Incluye limpieza de datos, análisis descriptivo y visualización de correlaciones estratégicas.",
+    tags: ["Python", "Pandas", "Data Analysis", "Jupyter"],
+    color: "from-blue-400 to-indigo-600",
+    type: "link",
+    link: "https://github.com/ZKLuisinhoDev/academic-performance-analysis-pandas",
+  },
+  {
     id: "games",
     title: "Proyectos de Lógica (Pygame)",
     description:
@@ -203,7 +213,7 @@ const projects = [
                 </div>
               </div>
             </button>
-          )
+          ),
         )
       }
     </div>
@@ -335,7 +345,7 @@ const projects = [
   const modalBackdrop = document.getElementById("modalBackdrop");
   const modalPanel = document.getElementById("modalPanel");
   const modalImage = document.getElementById(
-    "modalImage"
+    "modalImage",
   ) as HTMLImageElement | null;
   const modalTitle = document.getElementById("modalTitle");
   const modalDesc = document.getElementById("modalDesc");
