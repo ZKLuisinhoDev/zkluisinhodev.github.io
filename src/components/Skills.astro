@@ -3,74 +3,139 @@ const skillGroups = [
   {
     title: "Backend & IA",
     skills: [
-      { name: "Python / Django / DRF", level: 95, icon: "🐍" },
-      { name: "FastAPI", level: 55, icon: "🏎️" },
-      { name: "TensorFlow / Keras", level: 85, icon: "🧠" },
-      { name: "PostgreSQL / MySQL", level: 90, icon: "🗄️" },
-      { name: "Laravel", level: 65, icon: "🏗️" },
+      { name: "Python / Django / DRF", level: 95, icon: "🐍", class: "col-span-2 row-span-1" },
+      { name: "FastAPI", level: 55, icon: "🏎️", class: "col-span-1 row-span-1" },
+      { name: "PostgreSQL", level: 90, icon: "🗄️", class: "col-span-1 row-span-1" },
+      { name: "TensorFlow / IA", level: 85, icon: "🧠", class: "col-span-1 row-span-2" },
+      { name: "Laravel", level: 65, icon: "🏗️", class: "col-span-1 row-span-1" },
     ],
   },
   {
     title: "Frontend & Diseño",
     skills: [
-      { name: "Tailwind CSS", level: 98, icon: "🎨" },
-      { name: "React / Vite", level: 75, icon: "⚛️" },
-      { name: "Astro", level: 60, icon: "🚀" },
-      { name: "HTML / JS / CSS", level: 95, icon: "🌐" },
-      { name: "Multimedia (SENA)", level: 90, icon: "📸" },
+      { name: "React / Vite", level: 75, icon: "⚛️", class: "col-span-2 row-span-1" },
+      { name: "Tailwind CSS", level: 98, icon: "🎨", class: "col-span-1 row-span-1" },
+      { name: "Astro", level: 60, icon: "🚀", class: "col-span-1 row-span-1" },
+      { name: "Multimedia (SENA)", level: 90, icon: "📸", class: "col-span-1 row-span-2" },
     ],
   },
-  {
-    title: "Infra & Cloud",
-    skills: [
-      { name: "Supabase / Firebase", level: 85, icon: "⚡" },
-      { name: "Render / Vercel", level: 90, icon: "☁️" },
-      { name: "Git / GitHub", level: 95, icon: "🐙" },
-    ],
-  },
+];
+
+const allSkills = [
+  { name: "Python / Django", level: 95, icon: "🐍", category: "Backend", size: "large" },
+  { name: "React / Vite", level: 75, icon: "⚛️", category: "Frontend", size: "large" },
+  { name: "FastAPI", level: 85, icon: "🏎️", category: "Backend", size: "small" },
+  { name: "NestJS", level: 40, icon: "🦁", category: "Backend", size: "small" },
+  { name: "Java / JavaFX", level: 45, icon: "☕", category: "Basic", size: "small" },
+  { name: "TensorFlow", level: 85, icon: "🧠", category: "IA", size: "medium" },
+  { name: "Pandas", level: 90, icon: "🐼", category: "Data", size: "small" },
+  { name: "Pyplot / Jupyter", level: 80, icon: "📉", category: "Data", size: "small" },
+  { name: "PostgreSQL / MySQL", level: 90, icon: "🗄️", category: "SQL", size: "small" },
+  { name: "MongoDB", level: 65, icon: "🍃", category: "NoSQL", size: "small" },
+  { name: "Angular", level: 50, icon: "🅰️", category: "Frontend", size: "small" },
+  { name: "Tailwind / Bootstrap", level: 98, icon: "🎨", category: "Design", size: "small" },
+  { name: "Sass", level: 85, icon: "💅", category: "Styles", size: "small" },
+  { name: "Astro", level: 60, icon: "🚀", category: "Web", size: "small" },
+  { name: "Multimedia (SENA)", level: 90, icon: "📸", category: "Design", size: "medium" },
+  { name: "Metabase / Anaconda", level: 75, icon: "📊", category: "Tools", size: "small" },
+  { name: "Git / GitHub", level: 95, icon: "🐙", category: "Tools", size: "small" },
+  { name: "XAMPP / Supabase", level: 85, icon: "🐘", category: "Env", size: "small" },
+  { name: "ETL Processes", level: 70, icon: "⚙️", category: "Data", size: "small" },
+  { name: "Agile (Scrum/XP)", level: 95, icon: "🏃", category: "Agile", size: "medium" },
 ];
 ---
 
 <section id="skills" class="py-32 px-4 relative overflow-hidden">
   <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
-      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
-        Stack <span class="text-blue-500">Tecnológico</span>
+    <div class="mb-16 text-center md:text-left">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 reveal">
+        Stack <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Tecnológico</span>
       </h2>
-      <p class="text-gray-400">
-        Domino herramientas modernas para el desarrollo de extremo a extremo.
+      <p class="text-gray-400 reveal">
+        Herramientas modernas organizadas por especialidad y dominio.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <!-- Bento Grid Implementation -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[120px]">
       {
-        skillGroups.map((group) => (
-          <div class="space-y-8">
-            <h3 class="text-xl font-bold text-white/50 uppercase tracking-widest">
-              {group.title}
-            </h3>
-            <div class="space-y-6">
-              {group.skills.map((skill) => (
-                <div class="space-y-2">
-                  <div class="flex justify-between items-center text-sm">
-                    <span class="text-gray-200 flex items-center gap-2">
-                      <span class="text-xl">{skill.icon}</span>
-                      {skill.name}
-                    </span>
-                    <span class="text-blue-400 font-mono">{skill.level}%</span>
-                  </div>
-                  <div class="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div
-                      class="h-full bg-gradient-to-r from-blue-600 to-purple-500 rounded-full transition-all duration-1000"
+        allSkills.map((skill, index) => (
+          <div 
+            class={`
+              reveal group relative p-6 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md 
+              hover:border-blue-500/50 hover:bg-blue-500/5 transition-all duration-500 overflow-hidden
+              ${skill.size === 'large' ? 'col-span-2 row-span-2' : ''}
+              ${skill.size === 'medium' ? 'col-span-1 row-span-2' : ''}
+              ${skill.size === 'small' ? 'col-span-1 row-span-1' : ''}
+            `}
+            style={`transition-delay: ${index * 50}ms`}
+          >
+            <!-- Glow Effect -->
+            <div class={`absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-24 h-24 bg-blue-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
+            
+            <div class="relative h-full flex flex-col justify-between">
+              <div class="flex justify-between items-start">
+                <span class="text-3xl md:text-4xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">{skill.icon}</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-blue-400 bg-blue-400/10 px-2 py-1 rounded-md border border-blue-400/20">
+                  {skill.category}
+                </span>
+              </div>
+              
+              <div>
+                <h3 class="text-white font-bold text-lg leading-tight mb-2">{skill.name}</h3>
+                <div class="flex items-center gap-2">
+                  <div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div 
+                      class="h-full bg-gradient-to-r from-blue-600 to-purple-500 rounded-full transition-all duration-1000 delay-300"
                       style={`width: ${skill.level}%`}
                     />
                   </div>
+                  <span class="text-[10px] font-mono text-gray-400">{skill.level}%</span>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         ))
       }
+      
+      <!-- Call to Action Bento Card -->
+      <div class="reveal col-span-2 md:col-span-2 row-span-1 p-6 rounded-3xl border border-dashed border-white/20 bg-transparent flex items-center justify-center group hover:border-blue-500/50 transition-colors">
+        <p class="text-gray-500 font-medium group-hover:text-blue-400 transition-colors">
+          Aprendiendo continuamente nuevas tecnologías... 🚀
+        </p>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+</script>

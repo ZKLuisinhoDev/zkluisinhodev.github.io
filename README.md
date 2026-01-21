@@ -52,11 +52,7 @@ Si quieres clonar este proyecto y probarlo localmente:
     npx tunnelmole 4321
     ```
 
-## � Personalización
 
-- **Fotos de Proyectos:** Guarda tus capturas en `public/placeholders/` y actualiza las rutas en `src/components/Projects.astro`.
-- **Foto de Perfil:** Sustituye `public/mi-foto.jpeg` por tu foto personal.
-- **Textos:** Todo el contenido está modularizado en la carpeta `src/components/`.
 
 ---
 
