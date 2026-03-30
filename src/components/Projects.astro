@@ -1,10 +1,27 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const projects = [
+  {
+    id: "nodo-app",
+    title: "🛡️ NODO - HunterApp",
+    description: lang === 'es' 
+      ? "SaaS Estratégico para la gestión integral de campañas y equipos de alto rendimiento. Implementa una arquitectura jerárquica de comisiones, sistema de roles dinámicos 'Coordinador-First' y seguridad avanzada con encriptación AES-256 para datos sensibles."
+      : "Strategic SaaS for comprehensive campaign and high-performance team management. Highlights a hierarchical commission architecture, 'Coordinator-First' dynamic roles, and advanced security with AES-256 encryption.",
+    tags: ["Django 5", "React 18", "JWT", "AES-256 Encryption"],
+    color: "from-slate-800 to-black",
+    type: "link",
+    link: "https://github.com/ZKLuisinhoDev/nodo-app",
+  },
   {
     id: "ceifoce",
     title: "CEIFOCE",
-    description:
-      "Sistema de gestión integral para psicología (UDENAR), desarrollado con Django REST y React. Soporta aplicación masiva de encuestas y gestión avanzada de roles. Incorpora una arquitectura escalable y autenticación segura mediante JWT, garantizando el manejo de datos sensibles y validación in-situ con códigos diarios. Desplegado en Railway.",
+    description: lang === 'es'
+      ? "Sistema de gestión integral para psicología (UDENAR), desarrollado con Django REST y React. Soporta aplicación masiva de encuestas y gestión avanzada de roles. Incorpora una arquitectura escalable y autenticación segura mediante JWT."
+      : "Comprehensive management system for psychology (UDENAR), developed with Django REST and React. Supports massive survey application and advanced role management with scalable architecture and JWT.",
     tags: ["React", "Django REST", "JWT", "Scalable"],
     color: "from-blue-600 to-cyan-600",
     type: "carousel",
@@ -17,8 +34,9 @@ const projects = [
   {
     id: "kentur",
     title: "KENTUR",
-    description:
-      "Plataforma LMS educativa construida con React y Django REST Framework. Especializada en cursos y gestión financiera de créditos educativos. Su arquitectura escalable y autenticación JWT garantizan un entorno seguro y de alto rendimiento para docentes, estudiantes y aliados, permitiendo un crecimiento sostenido.",
+    description: lang === 'es'
+      ? "Plataforma LMS educativa construida con React y Django REST Framework. Especializada en cursos y gestión financiera de créditos educativos. Su arquitectura escalable garantiza un entorno seguro."
+      : "Educational LMS platform built with React and Django REST Framework. Specialized in courses and educational credit financial management. Scalable architecture guarantees a secure environment.",
     tags: ["React", "Django REST", "JWT", "LMS"],
     color: "from-emerald-600 to-green-600",
     type: "carousel",
@@ -31,8 +49,9 @@ const projects = [
   {
     id: "coffee-manager",
     title: "Coffee Manager System ☕",
-    description:
-      "Plataforma Enterprise Full Stack para la gestión integral de la cadena cafetera. Implementa seguridad robusta con Spring Security + JWT, arquitectura limpia por capas (SOLID) y lógica de inventario automático sincronizado. El frontend, desarrollado con React 19 y PrimeReact, ofrece un dashboard administrativo premium con KPIs en tiempo real y diseño responsivo de alto nivel.",
+    description: lang === 'es'
+      ? "Plataforma Enterprise Full Stack para la gestión integral de la cadena cafetera. Implementa seguridad robusta con Spring Security + JWT, arquitectura limpia (SOLID) y dashboard administrativo premium."
+      : "Full Stack Enterprise platform for comprehensive coffee chain management. Implements robust security with Spring Security + JWT, clean architecture (SOLID), and premium admin dashboard.",
     tags: ["Java Spring Boot 3", "React 19", "MySQL", "JWT"],
     color: "from-amber-800 to-orange-700",
     type: "link",
@@ -41,8 +60,9 @@ const projects = [
   {
     id: "ecomindalapp",
     title: "ECOMINDALAPP",
-    description:
-      "Plataforma E-commerce y administrativa para el sector agroindustrial. Integra gestión de inventarios y ventas con un backend robusto (Django REST), automatizaciones de negocio y un módulo de inteligencia artificial como complemento para moderación. Enfoque 100% en la solidez del sistema y reglas de negocio.",
+    description: lang === 'es'
+      ? "Plataforma E-commerce y administrativa para el sector agroindustrial. Integra gestión de inventarios y ventas con un backend robusto en Django REST e IA para moderación."
+      : "E-commerce and administrative platform for the agro-industrial sector. Integrates inventory and sales management with a robust Django REST backend and AI for moderation.",
     tags: ["E-commerce", "Django REST", "Automatización", "React"],
     color: "from-orange-600 to-amber-600",
     type: "carousel",
@@ -53,54 +73,15 @@ const projects = [
     ],
   },
   {
-    id: "fastapi-task-manager",
-    title: "API REST en FastAPI",
-    description:
-      "Backend de alto rendimiento para gestión de tareas y usuarios. Implementa autenticación segura con JWT/OAuth2, validación estricta con Pydantic v2 y ORM SQLAlchemy. Diseñado con arquitectura modular y Dependency Injection, siguiendo las mejores prácticas de Python moderno. Incluye documentación automática (Swagger/ReDoc) y tests con Pytest.",
-    tags: ["FastAPI", "Python 3.10+", "JWT", "SQLAlchemy"],
-    color: "from-teal-500 to-cyan-500",
-    type: "link",
-    link: "https://github.com/ZKLuisinhoDev/fastapi-task-manager-api",
-  },
-  {
-    id: "password-strength",
-    title: "Password Strength Checker 🔒",
-    description:
-      "Evaluador de seguridad de contraseñas en tiempo real con diseño Glassmorphism. El backend en FastAPI procesa la lógica de validación (longitud, entropía, caracteres) devolviendo un feedback instantáneo al frontend en Vanilla JS. Un ejemplo perfecto de micro-servicio enfocado en seguridad y UX.",
-    tags: ["FastAPI", "Security", "Glassmorphism", "Python"],
-    color: "from-indigo-500 to-violet-500",
-    type: "link",
-    link: "https://github.com/ZKLuisinhoDev/fastapi-glass-password-meter",
-  },
-  {
     id: "task-habit-tracker",
     title: "Task / Habit Tracker Full Stack 🚀",
-    description:
-      "Sistema de gestión de tareas Production-Ready diseñado con una arquitectura escalable. Combina un backend asíncrono de alto rendimiento en FastAPI con un frontend moderno en React (TypeScript + Vite). Implementa autenticación robusta (JWT + Argon2), gestión de estado global y persistencia con SQLAlchemy. Un ejemplo completo de desarrollo web moderno.",
+    description: lang === 'es'
+      ? "Sistema de gestión de tareas Production-Ready. Combina un backend asíncrono en FastAPI con un frontend moderno en React (TypeScript + Vite). Autenticación robusta y persistencia con SQLAlchemy."
+      : "Production-Ready task management system. Combines a high-performance asynchronous FastAPI backend with a modern React (TypeScript + Vite) frontend. Robust auth and SQLAlchemy persistence.",
     tags: ["FastAPI", "React", "TypeScript", "TailwindCSS"],
     color: "from-pink-500 to-rose-500",
     type: "link",
     link: "https://github.com/ZKLuisinhoDev/task-habit-tracker-fullstack-fastapi-react",
-  },
-  {
-    id: "academic-analysis",
-    title: "Academic Performance Analysis 🎓📊",
-    description:
-      "Solución de Data Analysis para la gestión de métricas educativas. Utiliza Python y Pandas para transformar datos crudos en información accionable, permitiendo detectar riesgos de deserción y patrones de rendimiento. Incluye limpieza de datos, análisis descriptivo y visualización de correlaciones estratégicas.",
-    tags: ["Python", "Pandas", "Data Analysis", "Jupyter"],
-    color: "from-blue-400 to-indigo-600",
-    type: "link",
-    link: "https://github.com/ZKLuisinhoDev/academic-performance-analysis-pandas",
-  },
-  {
-    id: "games",
-    title: "Proyectos de Lógica (Pygame)",
-    description:
-      "Colección de algoritmos y simulaciones interactivas. Este proyecto demuestra dominio de fundamentos de computación, grafos y lógica compleja, aplicando principios de Clean Code y buenas prácticas de ingeniería de software en Python puro.",
-    tags: ["Clean Code", "Algoritmos", "Lógica", "Python"],
-    color: "from-purple-600 to-pink-600",
-    type: "link",
-    link: "https://github.com/ZKLuisinhoDev/mathinvaders_kodland",
   },
 ];
 ---
@@ -111,11 +92,10 @@ const projects = [
       <h2
         class="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
       >
-        Proyectos Destacados
+        {t("projects.title")}
       </h2>
       <p class="text-gray-400 max-w-xl mx-auto">
-        Una selección de mis trabajos más impactantes. Click en las tarjetas
-        para ver más detalles.
+        {t("projects.desc")}
       </p>
     </div>
 

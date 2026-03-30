@@ -1,24 +1,11 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const skillGroups = [
-  {
-    title: "Backend & IA",
-    skills: [
-      { name: "Python / Django / DRF", level: 95, icon: "🐍", class: "col-span-2 row-span-1" },
-      { name: "FastAPI", level: 55, icon: "🏎️", class: "col-span-1 row-span-1" },
-      { name: "PostgreSQL", level: 90, icon: "🗄️", class: "col-span-1 row-span-1" },
-      { name: "TensorFlow / IA", level: 85, icon: "🧠", class: "col-span-1 row-span-2" },
-      { name: "Laravel", level: 65, icon: "🏗️", class: "col-span-1 row-span-1" },
-    ],
-  },
-  {
-    title: "Frontend & Diseño",
-    skills: [
-      { name: "React / Vite", level: 75, icon: "⚛️", class: "col-span-2 row-span-1" },
-      { name: "Tailwind CSS", level: 98, icon: "🎨", class: "col-span-1 row-span-1" },
-      { name: "Astro", level: 60, icon: "🚀", class: "col-span-1 row-span-1" },
-      { name: "Multimedia (SENA)", level: 90, icon: "📸", class: "col-span-1 row-span-2" },
-    ],
-  },
+  // ... existing logic if any
 ];
 
 const allSkills = [
@@ -49,10 +36,10 @@ const allSkills = [
   <div class="max-w-6xl mx-auto">
     <div class="mb-16 text-center md:text-left">
       <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 reveal">
-        Stack <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Tecnológico</span>
+        {t("skills.title")} <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{t("skills.subtitle")}</span>
       </h2>
       <p class="text-gray-400 reveal">
-        Herramientas modernas organizadas por especialidad y dominio.
+        {t("skills.desc")}
       </p>
     </div>
 
@@ -70,7 +57,7 @@ const allSkills = [
             `}
             style={`transition-delay: ${index * 50}ms`}
           >
-            <!-- Glow Effect -->
+            {/* Glow Effect */}
             <div class={`absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-24 h-24 bg-blue-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
             
             <div class="relative h-full flex flex-col justify-between">
@@ -101,7 +88,7 @@ const allSkills = [
       <!-- Call to Action Bento Card -->
       <div class="reveal col-span-2 md:col-span-2 row-span-1 p-6 rounded-3xl border border-dashed border-white/20 bg-transparent flex items-center justify-center group hover:border-blue-500/50 transition-colors">
         <p class="text-gray-500 font-medium group-hover:text-blue-400 transition-colors">
-          Aprendiendo continuamente nuevas tecnologías... 🚀
+          {t("skills.learning")}
         </p>
       </div>
     </div>

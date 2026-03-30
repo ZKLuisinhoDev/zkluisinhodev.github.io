@@ -1,5 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -81,15 +84,15 @@
             <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"
             ></span>
           </span>
-          Disponible para trabajar
+          {t("hero.available")}
         </div>
 
         <h1
           class="text-6xl md:text-8xl font-black tracking-tighter leading-none text-white reveal-hero"
         >
-          Soy <span
+          {t("hero.name").split(' ')[0]} <span
             class="bg-gradient-to-r from-blue-400 via-white to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"
-            >Luisinho</span
+            >{t("hero.name").split(' ').slice(1).join(' ')}</span
           >
         </h1>
       </div>
@@ -97,12 +100,8 @@
       <p
         class="text-xl md:text-2xl text-gray-400 leading-relaxed font-light reveal-hero"
       >
-        Ingeniero de Sistemas de la <span
-          class="text-white font-medium italic border-b border-blue-500/30"
-          >Universidad de Nariño</span
-        >. <br /> Experto en arquitecturas con <span
-          class="text-blue-400 font-medium">Django</span
-        > & <span class="text-emerald-400 font-medium">Spring Boot</span>.
+        {t("hero.desc")} <br /> 
+        <span set:html={t("hero.expert").replace('Django', '<span class="text-blue-400 font-bold drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">Django</span>').replace('Spring Boot', '<span class="text-emerald-400 font-bold drop-shadow-[0_0_10px_rgba(52,211,153,0.5)]">Spring Boot</span>')} />
       </p>
 
       <div
@@ -112,7 +111,7 @@
           href="#projects"
           class="group relative px-10 py-4 bg-white text-black rounded-full font-bold transition-all hover:scale-105 overflow-hidden flex items-center justify-center gap-2"
         >
-          <span class="relative z-10">Ver Proyectos</span>
+          <span class="relative z-10">{t("hero.btn.projects")}</span>
           <svg
             class="w-5 h-5 transition-transform group-hover:translate-x-1"
             fill="none"
@@ -130,7 +129,7 @@
           href="#contact"
           class="px-10 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold backdrop-blur-md transition-all hover:bg-white/5 hover:border-white/50 flex items-center justify-center"
         >
-          Contactar
+          {t("hero.btn.contact")}
         </a>
       </div>
     </div>

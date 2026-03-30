@@ -1,5 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="about" class="py-32 px-4 bg-white/[0.02]">
@@ -9,44 +12,37 @@
       <div class="flex-1 space-y-8">
         <div class="inline-flex items-center gap-2 text-blue-400 font-medium">
           <span class="w-12 h-px bg-blue-400"></span>
-          Sobre Mí
+          {t("nav.about")}
         </div>
         <h2 class="text-3xl md:text-5xl font-bold text-white reveal">
-          Ingeniería de Sistemas <br />
-          <span class="text-gray-500">& Diseño Multimedia.</span>
+          {t("about.title")} <br />
+          <span class="text-gray-500">{t("about.subtitle")}</span>
         </h2>
         <p class="text-gray-400 leading-relaxed text-lg text-pretty reveal">
-          Soy egresado de <strong
-            >Ingeniería de Sistemas de la Universidad de Nariño</strong
-          >. Mi formación académica me ha permitido desarrollar una base sólida
-          en arquitectura de software y resolución de problemas complejos.
+          {t("about.desc1")}
         </p>
         <p class="text-gray-400 leading-relaxed text-lg text-pretty reveal">
-          Además, cuento con un <strong
-            >Técnico en Diseño y Creación de Multimedias (SENA)</strong
-          >, lo que me otorga una perspectiva única para fusionar la
-          funcionalidad técnica con interfaces estéticas y experiencias de
-          usuario memorables.
+          {t("about.desc2")}
         </p>
 
         <!-- Idiomas -->
         <div class="space-y-4 pt-4 reveal">
-          <h3 class="text-xl font-bold text-white">Idiomas</h3>
+          <h3 class="text-xl font-bold text-white">{t("about.languages")}</h3>
           <div class="flex flex-wrap gap-4">
             <div
               class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:border-blue-500/50 transition-colors"
             >
-              <span class="text-blue-400 font-bold">Español</span> - Nativo
+              <span class="text-blue-400 font-bold">{t("about.lang.es").split(' - ')[0]}</span> - {t("about.lang.es").split(' - ')[1]}
             </div>
             <div
               class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:border-blue-500/50 transition-colors"
             >
-              <span class="text-blue-400 font-bold">Inglés</span> - C1
+              <span class="text-blue-400 font-bold">{t("about.lang.en").split(' - ')[0]}</span> - {t("about.lang.en").split(' - ')[1]}
             </div>
             <div
               class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:border-blue-500/50 transition-colors"
             >
-              <span class="text-blue-400 font-bold">Francés</span> - A1
+              <span class="text-blue-400 font-bold">{t("about.lang.fr").split(' - ')[0]}</span> - {t("about.lang.fr").split(' - ')[1]}
             </div>
           </div>
         </div>
@@ -68,10 +64,10 @@
               ></path></svg
             >
           </div>
-          <h3 class="font-bold text-white">Sistemas</h3>
+          <h3 class="font-bold text-white">{lang === 'es' ? 'Sistemas' : 'Systems'}</h3>
           <p class="text-sm text-gray-400">Universidad de Nariño</p>
           <span class="text-[10px] uppercase tracking-widest text-blue-300"
-            >Grado Ingeniería</span
+            >{lang === 'es' ? 'Grado Ingeniería' : "Engineering Degree"}</span
           >
         </div>
 
@@ -94,7 +90,7 @@
           <h3 class="font-bold text-white">Multimedia</h3>
           <p class="text-sm text-gray-400">SENA</p>
           <span class="text-[10px] uppercase tracking-widest text-purple-300"
-            >Técnico Diseño</span
+            >{lang === 'es' ? 'Técnico Diseño' : 'Design Technician'}</span
           >
         </div>
       </div>
