@@ -1,4 +1,4 @@
-# 🚀 LuisinhoDEV | Portfolio Profesional
+# 🚀 Luis Felipe Lasso Cuastumal | Portfolio Profesional
 
 ¡Bienvenido a mi sitio personal! Soy un **Ingeniero de Sistemas (Universidad de Nariño)** enfocado en el desarrollo Full Stack, Inteligencia Artificial y Diseño Multimedia. Este portfolio está diseñado para mostrar mi trayectoria, habilidades técnicas y proyectos destacados.
 
@@ -56,4 +56,4 @@ Si quieres clonar este proyecto y probarlo localmente:
 
 ---
 
-Desarrollado con ❤️ por **LuisinhoDEV**
+Desarrollado con ❤️ por **Luis Felipe Lasso Cuastumal**
